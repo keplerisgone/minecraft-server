@@ -471,6 +471,19 @@ case "\$1" in
         ;;
     stop)
         echo "🛑 Stopping server and auto-shutdown..."
+        screen -S minecraft -p 0 -X eval 'stuff "say §c⚠️ SERVER SHUTTING DOWN IN 5 SECONDS!\015"'
+	    sleep 1
+	    screen -S minecraft -p 0 -X eval 'stuff "say §e⚠️ 4...\015"'
+	    sleep 1
+	    screen -S minecraft -p 0 -X eval 'stuff "say §e⚠️ 3...\015"'
+    	sleep 1
+    	screen -S minecraft -p 0 -X eval 'stuff "say §6⚠️ 2...\015"'
+    	sleep 1
+    	screen -S minecraft -p 0 -X eval 'stuff "say §c⚠️ 1...\015"'
+    	sleep 1
+    
+    	screen -S minecraft -p 0 -X eval 'stuff "say §4🛑 SERVER STOPPING NOW! Goodbye! §f❤️\015"'
+        sleep 1
         ./autoshutdown_control.sh stop
         screen -S minecraft -X eval 'stuff "stop\\015"'
         echo
